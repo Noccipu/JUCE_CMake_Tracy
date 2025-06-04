@@ -1,0 +1,6 @@
+[submodule "JUCE"]
+	path = JUCE
+	url = https://github.com/juce-framework/JUCE.git
+[submodule "tracy"]
+	path = tracy
+	url = https://github.com/wolfpld/tracy.git
