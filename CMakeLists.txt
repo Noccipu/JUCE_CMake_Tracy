@@ -55,6 +55,7 @@ juce_add_plugin(AudioPluginExample
     PRODUCT_NAME "AudioPluginExample"
     PLUGIN_MANUFACTURER_CODE Juce
     COPY_PLUGIN_AFTER_BUILD TRUE
+    VST3_AUTO_MANIFEST FALSE
     VST3_COPY_DIR "${CMAKE_CURRENT_SOURCE_DIR}/builds_results/${CMAKE_BUILD_TYPE}"
     PLUGIN_CODE Dem0
     FORMATS Standalone VST3)
