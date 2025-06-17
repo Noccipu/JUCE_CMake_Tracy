@@ -1,7 +1,7 @@
 #pragma once
 
 #include <JuceHeader.h>
-#include <tracy/Tracy.hpp>
+#include "tracy/Tracy.hpp"
 
 //==============================================================================
 class AudioPluginAudioProcessor final : public juce::AudioProcessor

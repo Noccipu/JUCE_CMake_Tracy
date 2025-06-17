@@ -34,6 +34,9 @@ message(STATUS "Adding JUCE submodule - done")
 # available options: TRACY_ENABLE, TRACY_LTO, TRACY_ON_DEMAND, TRACY_NO_BROADCAST, TRACY_NO_CODE_TRANSFER, ...
 option(TRACY_ENABLE "" ON)
 option(TRACY_ON_DEMAND "" ON)
+option(TRACY_NO_BROADCAST "" ON)
+option(TRACY_MANUAL_LIFETIME "" ON)
+option(TRACY_DELAYED_INIT "" ON)
 message(STATUS "Adding Tracy submodule")
 add_subdirectory(tracy) # target: TracyClient or alias Tracy::TracyClient
 message(STATUS "Adding Tracy submodule - done")
@@ -85,6 +88,7 @@ target_sources(AudioPluginExample
 # definitions will be visible both to your code, and also the JUCE module code, so for new
 # definitions, pick unique names that are unlikely to collide! This is a standard CMake command.
 
+
 target_compile_definitions(AudioPluginExample
     PUBLIC
         # JUCE_WEB_BROWSER and JUCE_USE_CURL would be on by default, but you might not need them.
@@ -116,11 +120,6 @@ target_link_libraries(AudioPluginExample
         juce::juce_recommended_config_flags
         juce::juce_recommended_lto_flags
         juce::juce_recommended_warning_flags)
-
-        
-if (PERFETTO STREQUAL ON)
-    target_link_libraries(AudioPluginExample PRIVATE Melatonin::Perfetto)
-endif()
         
 
 
