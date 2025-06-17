@@ -34,6 +34,9 @@ message(STATUS "Adding JUCE submodule - done")
 # available options: TRACY_ENABLE, TRACY_LTO, TRACY_ON_DEMAND, TRACY_NO_BROADCAST, TRACY_NO_CODE_TRANSFER, ...
 option(TRACY_ENABLE "" ON)
 option(TRACY_ON_DEMAND "" ON)
+option(TRACY_NO_BROADCAST "" ON)
+option(TRACY_MANUAL_LIFETIME "" ON)
+option(TRACY_DELAYED_INIT "" ON)
 message(STATUS "Adding Tracy submodule")
 add_subdirectory(tracy) # target: TracyClient or alias Tracy::TracyClient
 message(STATUS "Adding Tracy submodule - done")
