@@ -12,10 +12,16 @@ AudioPluginAudioProcessor::AudioPluginAudioProcessor()
                      #endif
                        )
 {
+#if TRACY_ENABLE
+    tracy::StartupProfiler();
+#endif
 }
 
 AudioPluginAudioProcessor::~AudioPluginAudioProcessor()
 {
+#if TRACY_ENABLE
+    tracy::ShutdownProfiler();
+#endif
 }
 
 //==============================================================================

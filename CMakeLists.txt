@@ -88,6 +88,7 @@ target_sources(AudioPluginExample
 # definitions will be visible both to your code, and also the JUCE module code, so for new
 # definitions, pick unique names that are unlikely to collide! This is a standard CMake command.
 
+
 target_compile_definitions(AudioPluginExample
     PUBLIC
         # JUCE_WEB_BROWSER and JUCE_USE_CURL would be on by default, but you might not need them.
@@ -119,11 +120,6 @@ target_link_libraries(AudioPluginExample
         juce::juce_recommended_config_flags
         juce::juce_recommended_lto_flags
         juce::juce_recommended_warning_flags)
-
-        
-if (PERFETTO STREQUAL ON)
-    target_link_libraries(AudioPluginExample PRIVATE Melatonin::Perfetto)
-endif()
         
 
 
