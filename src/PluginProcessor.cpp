@@ -13,14 +13,18 @@ AudioPluginAudioProcessor::AudioPluginAudioProcessor()
                        )
 {
 #if TRACY_ENABLE
+#ifdef PLUGIN_FORMAT_VST3
     tracy::StartupProfiler();
+#endif
 #endif
 }
 
 AudioPluginAudioProcessor::~AudioPluginAudioProcessor()
 {
 #if TRACY_ENABLE
+#ifdef PLUGIN_FORMAT_VST3
     tracy::ShutdownProfiler();
+#endif
 #endif
 }
 
