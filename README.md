@@ -29,6 +29,31 @@ git submodule --init --recursive
 
 ### Usage Overview
 
+- For **Debug** and **Release** builds, you can toggle Tracy Profiler via `TRACY_ENABLE` CMake option:
+```cmake
+cmake -B builds -DCMAKE_BUILD_TYPE=Debug -DTRACY_ENABLE=ON
+```
+Once you set `TRACY_ENABLE=ON` (or `OFF`), that setting persists for subsequent CMake reconfigurations until you override it again. For build performance, when `TRACY_ENABLE` is turned `OFF`, the library isn't added.
+
+- Since a VST3 is a DLL, the Tracy configuration is not the same as for an executable. Thus it is necessary to differentiate two different builds for **Standalone** and for **VST3** formats. This can be done with the `PLUGIN_FORMAT` CMake option:
+```cmake
+cmake -B builds -DCMAKE_BUILD_TYPE=Debug -DTRACY_ENABLE=ON -DPLUGIN_FORMAT=VST3
+```
+
+- To profile your plugin during execution, you can launch the Tracy executable (previously built or directly downloaded in their [Releases page](https://github.com/wolfpld/tracy/releases) for Windows). The connection will occur only when both the *server* (Tracy profiler) and the *client* (your plugin) are running.
+
+### Defining Profiling Targets
+
+- The simplest way to add a function to profile is to add these lines at the beginning of it:
+```cpp
+#ifdef TRACY_ENABLE
+    ZoneScoped;
+#endif
+```
+In fact, all the Tracy commands must be surrounded by the `TRACY_ENABLE` definition condition to ensure that the program runs smoothly even when `TRACY_ENABLE=OFF`.
+
+- All Tracy functions are described in [Tracy documentation](https://github.com/wolfpld/tracy/releases/latest/download/tracy.pdf)
+
 ## Documentation
 
 ### Useful Resources
