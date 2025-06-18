@@ -130,7 +130,10 @@ bool AudioPluginAudioProcessor::isBusesLayoutSupported (const BusesLayout& layou
 void AudioPluginAudioProcessor::processBlock (juce::AudioBuffer<float>& buffer,
                                               juce::MidiBuffer& midiMessages)
 {
+#ifdef TRACY_ENABLE
+    FrameMark;
     ZoneScoped;
+#endif
     juce::ignoreUnused (midiMessages);
 
     juce::ScopedNoDenormals noDenormals;
